@@ -1,0 +1,15 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r data_quality/requirements.txt
+      - run: pytest tests/ -q
+      - run: python -m py_compile producers/*.py streaming/*.py mongodb/*.py data_quality/*.py batch/spark_jobs/*.py
