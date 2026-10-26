@@ -1,0 +1,10 @@
+variable "project_id" {
+  description = "GCP project id to deploy into"
+  type        = string
+}
+
+variable "region" {
+  description = "GCP region"
+  type        = string
+  default     = "us-central1"
+}
