@@ -11,5 +11,5 @@ jobs:
         with:
           python-version: "3.11"
       - run: pip install -r data_quality/requirements.txt
-      - run: pytest tests/ -q
+      - run: PYTHONPATH=. pytest tests/ -q
       - run: python -m py_compile producers/*.py streaming/*.py mongodb/*.py data_quality/*.py batch/spark_jobs/*.py
